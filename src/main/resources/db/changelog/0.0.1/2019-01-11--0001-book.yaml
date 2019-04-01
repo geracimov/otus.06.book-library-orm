@@ -1,0 +1,29 @@
+databaseChangeLog:
+- changeSet:
+    id: 2019-04-01--0001--book
+    author: geracimov
+    createTable:
+      tableName: book
+      columns:
+      - column:
+          name: id
+          type: UUID
+          constraints:
+            nullable: false
+            primaryKey: true
+            primaryKeyName: pk_book
+      - column:
+          name: name
+          type: varchar(50)
+      - column:
+          name: year
+          type: int
+      - column:
+          name: page_count
+          type: int
+      - column:
+          name: isbn
+          type: varchar(20)
+          constraints:
+            nullable: false
+            primaryKeyName: ui_book_isbn
