@@ -1,14 +1,14 @@
 databaseChangeLog:
 - changeSet:
-    id: 2019-01-11--0001-books
+    id: 002-2019-04-02-authors
     author: geracimov
     context: test
     runOnChange: true
     loadUpdateData:
       primaryKey: id
-      file: data/books.csv
+      file: data/authors.csv
       relativeToChangelogFile: true
       separator: ;
       quotChar: '"'
       encoding: UTF-8
-      tableName: book
+      tableName: author

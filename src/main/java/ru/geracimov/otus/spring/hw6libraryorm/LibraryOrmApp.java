@@ -1,19 +1,33 @@
 package ru.geracimov.otus.spring.hw6libraryorm;
 
-import org.h2.tools.Console;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import ru.geracimov.otus.spring.hw6libraryorm.domain.Author;
+import ru.geracimov.otus.spring.hw6libraryorm.domain.Book;
+import ru.geracimov.otus.spring.hw6libraryorm.repository.AuthorRepository;
+import ru.geracimov.otus.spring.hw6libraryorm.repository.BookRepository;
 
-import java.sql.SQLException;
+import java.util.UUID;
+
 
 @SpringBootApplication
 public class LibraryOrmApp {
     public static void main(String[] args) {
-        SpringApplication.run(LibraryOrmApp.class);
-        try {
-            Console.main(args);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        ApplicationContext context = SpringApplication.run(LibraryOrmApp.class);
+
+        AuthorRepository authorRepository = context.getBean(AuthorRepository.class);
+        BookRepository bookRepository = context.getBean(BookRepository.class);
+
+        Author chehov = authorRepository.getById(UUID.fromString("a3057eca-556e-11e9-8647-d663bd873d93"));
+
+        System.out.println(bookRepository.getBooksByAuthor(chehov));
+
+        Book b = bookRepository.getBooksByAuthor(chehov)
+                               .stream()
+                               .findAny()
+                               .orElseThrow();
+        System.out.println(authorRepository.getAuthorsByBook(b));
+
     }
 }
