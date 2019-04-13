@@ -11,9 +11,9 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "AUTHOR")
-@ToString(exclude = "books")
-public class Author {
+@Table(name = "GENRE")
+@ToString( exclude = "books")
+public class Genre {
     @Id
     @GeneratedValue
     @Column(name = "ID")
@@ -22,15 +22,11 @@ public class Author {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "BIRTH")
-    private LocalDate birth;
-
-    public Author(String name, LocalDate birth) {
+    public Genre(String name) {
         this.name = name;
-        this.birth = birth;
     }
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
     private Set<Book> books;
 
     public void addBook(Book book) {
