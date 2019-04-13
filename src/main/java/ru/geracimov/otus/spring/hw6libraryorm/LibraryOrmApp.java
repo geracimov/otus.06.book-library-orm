@@ -21,13 +21,7 @@ public class LibraryOrmApp {
 
         Author chehov = authorRepository.getById(UUID.fromString("a3057eca-556e-11e9-8647-d663bd873d93"));
 
-        System.out.println(bookRepository.getBooksByAuthor(chehov));
 
-        Book b = bookRepository.getBooksByAuthor(chehov)
-                               .stream()
-                               .findAny()
-                               .orElseThrow();
-        System.out.println(authorRepository.getAuthorsByBook(b));
 
     }
 }

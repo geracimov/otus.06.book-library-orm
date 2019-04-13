@@ -1,7 +1,7 @@
 package ru.geracimov.otus.spring.hw6libraryorm.domain;
 
 import lombok.Data;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "AUTHOR")
 @ToString(exclude = "books")
 public class Author {
