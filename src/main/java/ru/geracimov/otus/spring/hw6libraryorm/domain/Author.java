@@ -26,13 +26,13 @@ public class Author {
     @Column(name = "BIRTH")
     private LocalDate birth;
 
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+    private Set<Book> books;
+
     public Author(String name, LocalDate birth) {
         this.name = name;
         this.birth = birth;
     }
-
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
 
     public void addBook(Book book) {
         books.add(book);

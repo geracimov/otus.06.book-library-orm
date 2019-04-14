@@ -27,15 +27,14 @@ public class Review {
 
     @Column(name = "TEXT")
     private String text;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BOOK_ID")
+    private Book book;
 
     public Review(String reviewerName, LocalDateTime dateTime, String text) {
         this.reviewerName = reviewerName;
         this.dateTime = dateTime;
         this.text = text;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "BOOK_ID")
-    private Book book;
 
 }

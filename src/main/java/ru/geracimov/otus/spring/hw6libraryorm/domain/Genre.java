@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Table(name = "GENRE")
-@ToString( exclude = "books")
+@ToString(exclude = "books")
 public class Genre {
     @Id
     @GeneratedValue
@@ -21,13 +21,12 @@ public class Genre {
 
     @Column(name = "NAME")
     private String name;
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<Book> books;
 
     public Genre(String name) {
         this.name = name;
     }
-
-    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
-    private Set<Book> books;
 
     public void addBook(Book book) {
         books.add(book);

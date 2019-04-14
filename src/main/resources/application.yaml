@@ -10,4 +10,4 @@ spring:
 #    show-sql: true
 logging:
   level:
-    sql: debug
+    sql: info

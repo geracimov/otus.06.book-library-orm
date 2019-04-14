@@ -2,13 +2,15 @@ package ru.geracimov.otus.spring.hw6libraryorm.repository;
 
 import ru.geracimov.otus.spring.hw6libraryorm.domain.Author;
 import ru.geracimov.otus.spring.hw6libraryorm.domain.Book;
+import ru.geracimov.otus.spring.hw6libraryorm.domain.Review;
 
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
-public interface BookRepository {
-
-    Book getById(UUID id);
+public interface BookRepository extends CrudRepository<Book> {
 
     Set<Book> getBooksByAuthor(Author author);
+
+    List<Book> getAllBooks();
+
 }

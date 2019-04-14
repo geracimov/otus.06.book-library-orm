@@ -3,12 +3,11 @@ package ru.geracimov.otus.spring.hw6libraryorm.repository;
 import ru.geracimov.otus.spring.hw6libraryorm.domain.Book;
 import ru.geracimov.otus.spring.hw6libraryorm.domain.Review;
 
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
-public interface ReviewRepository {
+public interface ReviewRepository extends CrudRepository<Review> {
 
-    Review getById(UUID id);
+    List<Review> getReviewsByBook(Book book);
 
-    Set<Review> getReviewsByBook(Book book);
+    List<Review> getAllReviews();
 }
